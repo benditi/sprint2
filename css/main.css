@@ -1,3 +1,38 @@
 * {
     box-sizing: border-box;
 }
+
+
+/* FONTS */
+
+@font-face {
+    font-family: mpact;
+    src: url(/fonts/impact.ttf);
+}
+
+.main-container {
+    height: 90vh;
+}
+
+.canvas-container {
+    background-color: brown;
+    margin: 0 auto;
+    width: 70%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    /* outline: 1px solid black; */
+    background-color: white;
+}
+
+
+/* button {
+    height: 100px;
+    width: 100px;
+} */

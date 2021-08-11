@@ -6,14 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
-    <title>Document</title>
+    <title>David's Meme Generator</title>
 </head>
 
 
-<body>
+<body onload="init()">
+    <div class="main-container">
+        <section class="canvas-container">
+            <canvas id="my-canvas" height="450" width="450"></canvas>
+        </section>
+        <section class="btns-container">
+            <select name="color" id="color" onchange="onSetColor()">
+                <option selected>Color</option>
+                <option value="yellow">yellow</option>
+                <option value="orange">orange</option>
+                <option value="red">red</option>
+                <option value="pink">pink</option>
+                <option value="purple">purple</option>
+                <option value="blue">blue</option>
+                <option value="green">green</option>
+                <option value="black">black</option>
+                <option value="brown">brown</option>
+                <option value="grey">grey</option>
+            <button class="font btn">Font</button>
+        </section>
+    </div>
+    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+    <!-- <button onclick="onSetInput()">My File</button> -->
+    <img class="img1" src="./meme-imgs/1.jpg" alt="">
 
 
 
+    <script src="./js/upload-service.js"></script>
+    <script src="./js/editor-service.js"></script>
+    <script src="./js/meme-service.js"></script>
     <script src="./js/controller.js"></script>
 </body>
 
