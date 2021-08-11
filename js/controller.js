@@ -27,7 +27,7 @@ function renderGallery() {
     elGallery.innerHTML = strHtmls.join('');
 }
 
-function reorderCanvas() {
+function reOrderCanvas() {
     clearCanvas()
     renderImg(gMeme.selectedImgId);
     let currLineIdx = gMeme.selectedLineIdx
@@ -37,6 +37,11 @@ function reorderCanvas() {
         drawText(line.txt, line.xline, line.yline)
     });
     gMeme.selectedLineIdx = currLineIdx;
+    let currLine = gMeme.lines[gMeme.selectedLineIdx];
+    let x = currLine.xline;
+    let y = currLine.yline;
+    drawRect(x, y);
+
 }
 
 function renderImg(imgID) {
@@ -67,6 +72,7 @@ function onEditTxt(e) {
 
 function onCreateNewLine() {
     createNewLine();
+    reOrderCanvas();
     let newTxt = document.querySelector('input.curr-txt').value;
     newTxt = '';
     document.querySelector('input.curr-txt').value = newTxt;
@@ -75,7 +81,7 @@ function onCreateNewLine() {
 
 function goToEditor(imgID) {
     document.querySelector('.image-gallery').style.display = 'none';
-    document.querySelector('.editor-container').style.display = 'block';
+    document.querySelector('.editor-container').style.display = 'flex';
     gMeme.selectedImgId = imgID;
     renderImg(imgID);
     initCanvas();

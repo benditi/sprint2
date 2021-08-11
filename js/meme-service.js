@@ -37,28 +37,28 @@ function getCurrImg() {
 function setColor(color) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.color = color;
-    reorderCanvas()
+    reOrderCanvas()
     drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 
 function setFont(font) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.fontfamily = font;
-    reorderCanvas()
+    reOrderCanvas()
     drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 
 function setFontSize(num) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.size += num;
-    reorderCanvas()
+    reOrderCanvas()
     drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 
 function editText(txt) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.txt = txt;
-    reorderCanvas()
+    reOrderCanvas()
         // drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 
@@ -77,12 +77,12 @@ function createNewLine() {
 }
 
 function switchLine() {
-    // plusOneIdx();
     gMeme.selectedLineIdx++;
     if (gMeme.selectedLineIdx >= gMeme.lines.length) {
         gMeme.selectedLineIdx = 0;
     }
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
+    reOrderCanvas();
     let txt = currLine.txt;
     return txt;
 }
