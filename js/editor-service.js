@@ -1,7 +1,7 @@
 'use strict';
 
 function drawText(txt, x, y) {
-    let currLine = gMeme.lines[0]
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
     gCtx.lineWidth = 3
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = currLine.color;

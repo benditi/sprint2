@@ -26,6 +26,10 @@ var gImgs = [{
     }
 ];
 
+function plusOneIdx() {
+    gMeme.selectedLineIdx++;
+}
+
 function getCurrImg() {
     return gMeme.selectedImgId;
 }
@@ -52,23 +56,31 @@ function setFontSize(num) {
 }
 
 function editText(txt) {
+    debugger;
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.txt = txt;
     reorderCanvas()
     drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 
-function createNewLine(txt) {
+function createNewLine() {
     let newLine = {
-        txt: txt,
-        size: 60,
+        txt: '',
+        size: 40,
         align: 'left',
         color: 'white',
         fontfamily: 'mpact',
-        xline: 0,
-        yline: 40,
-    }
+        xline: 50,
+        yline: 100,
+    };
     gMeme.lines.push(newLine);
-    gMeme.selectedLineIdx++;
-    drawText(newLine.txt, newLine.xline, newLine.yline);
+    plusOneIdx();
+}
+
+function switchLine() {
+    // plusOneIdx();
+    gMeme.selectedLineIdx--;
+    let currLine = gMeme.lines[gMeme.selectedLineIdx];
+    let txt = currLine.txt;
+    return txt;
 }

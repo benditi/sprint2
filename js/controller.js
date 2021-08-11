@@ -29,6 +29,11 @@ function renderGallery() {
 function reorderCanvas() {
     clearCanvas()
     renderImg(gMeme.selectedImgId);
+    let lines = gMeme.lines;
+    lines.forEach((line, idx) => {
+        gMeme.selectedLineIdx = idx;
+        drawText(line.txt, line.xline, line.yline)
+    });
 }
 
 function renderImg(imgID) {
@@ -57,9 +62,12 @@ function onEditTxt(e) {
     editText(newTxt);
 }
 
-function onUpdateInput(e) {
-    let newTxt = e.target.value;
-    createNewLine(newTxt);
+function onCreateNewLine() {
+    createNewLine();
+    let newTxt = document.querySelector('input.curr-txt').value;
+    newTxt = '';
+    document.querySelector('input.curr-txt').value = newTxt;
+
 }
 
 function goToEditor(imgID) {
@@ -70,10 +78,14 @@ function goToEditor(imgID) {
     initCanvas();
 }
 
+function onSwitch() {
+    let txt = switchLine();
+    document.querySelector('input.curr-txt').value = txt;
+}
+
 
 // Image Section
 // function onImgInput(ev) {
-//     debugger;
 //     loadImageFromInput(ev, renderImg)
 // }
 
