@@ -8,4 +8,7 @@ function drawText(txt, x, y) {
     gCtx.font = `${currLine.size}px ${currLine.fontfamily}`
     gCtx.fillText(txt, x, y)
     gCtx.strokeText(txt, x, y)
+    currLine.xline = x;
+    currLine.yline = y;
+
 }

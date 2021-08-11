@@ -16,6 +16,8 @@
             <canvas id="my-canvas" height="450" width="450"></canvas>
         </section>
         <section class="btns-container">
+            <input class="curr-txt" type="text">
+            <!-- <input type="text" placeholder="Add a line: "> -->
             <select name="color" id="color" onchange="onSetColor()">
                 <option selected>Color</option>
                 <option value="yellow">yellow</option>
@@ -28,7 +30,16 @@
                 <option value="black">black</option>
                 <option value="brown">brown</option>
                 <option value="grey">grey</option>
-            <button class="font btn">Font</button>
+            </select>
+            <select name="font" id="font" onchange="onSetFont()">
+                <option selected>Font</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+            </select>
+            <button class="font-up btn" onclick="onFontGrow(5)">A+</button>
+            <button class="font-up btn" onclick="onFontGrow(-5)">A-</button>
         </section>
     </div>
     <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
