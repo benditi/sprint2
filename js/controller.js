@@ -10,7 +10,8 @@ function init() {
 }
 
 function initCanvas() {
-    drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 50, 400);
+    let currLine = gMeme.lines[gMeme.selectedLineIdx];
+    drawText(currLine.txt, currLine.xline, currLine.yline);
     let currTxt = gMeme.lines[gMeme.selectedLineIdx].txt;
     document.querySelector('input').value = currTxt;
     const input = document.querySelector('input');
@@ -29,11 +30,13 @@ function renderGallery() {
 function reorderCanvas() {
     clearCanvas()
     renderImg(gMeme.selectedImgId);
+    let currLineIdx = gMeme.selectedLineIdx
     let lines = gMeme.lines;
     lines.forEach((line, idx) => {
         gMeme.selectedLineIdx = idx;
         drawText(line.txt, line.xline, line.yline)
     });
+    gMeme.selectedLineIdx = currLineIdx;
 }
 
 function renderImg(imgID) {

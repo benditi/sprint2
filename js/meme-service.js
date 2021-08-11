@@ -7,10 +7,10 @@ var gMeme = {
         txt: 'I never eat Falafel',
         size: 40,
         align: 'left',
-        color: 'red',
+        color: 'white',
         fontfamily: 'mpact',
-        xline: 0,
-        yline: 0,
+        xline: 50,
+        yline: 400,
     }]
 }
 
@@ -56,11 +56,10 @@ function setFontSize(num) {
 }
 
 function editText(txt) {
-    debugger;
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.txt = txt;
     reorderCanvas()
-    drawText(currLine.txt, currLine.xline, currLine.yline)
+        // drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 
 function createNewLine() {
@@ -71,7 +70,7 @@ function createNewLine() {
         color: 'white',
         fontfamily: 'mpact',
         xline: 50,
-        yline: 100,
+        yline: 100 + ((gMeme.lines.length - 1) * 40),
     };
     gMeme.lines.push(newLine);
     plusOneIdx();
@@ -79,7 +78,10 @@ function createNewLine() {
 
 function switchLine() {
     // plusOneIdx();
-    gMeme.selectedLineIdx--;
+    gMeme.selectedLineIdx++;
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) {
+        gMeme.selectedLineIdx = 0;
+    }
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     let txt = currLine.txt;
     return txt;
