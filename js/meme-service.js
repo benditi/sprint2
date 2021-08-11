@@ -14,38 +14,47 @@ var gMeme = {
     }]
 }
 
+var gImgs = [{
+        id: 1,
+        url: './meme-imgs/1.jpg',
+        keywords: ['angry']
+    },
+    {
+        id: 2,
+        url: './meme-imgs/2.jpg',
+        keywords: ['love', 'happy']
+    }
+];
+
 function getCurrImg() {
     return gMeme.selectedImgId;
 }
 
 function setColor(color) {
-    debugger;
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.color = color;
-    console.log(color);
-    renderCanvas()
+    reorderCanvas()
     drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 
 function setFont(font) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.fontfamily = font;
-    console.log(font);
-    renderCanvas()
+    reorderCanvas()
     drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 
 function setFontSize(num) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.size += num;
-    renderCanvas()
+    reorderCanvas()
     drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 
 function editText(txt) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.txt = txt;
-    renderCanvas()
+    reorderCanvas()
     drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 

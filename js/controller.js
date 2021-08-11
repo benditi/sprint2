@@ -4,25 +4,34 @@ var gCanvas;
 var gCtx;
 
 function init() {
+    renderGallery();
     gCanvas = document.getElementById('my-canvas')
     gCtx = gCanvas.getContext('2d');
-    renderImg();
+}
+
+function initCanvas() {
     drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 50, 400);
     let currTxt = gMeme.lines[gMeme.selectedLineIdx].txt;
     document.querySelector('input').value = currTxt;
     const input = document.querySelector('input');
+    //listeners
     input.addEventListener('input', onEditTxt);
-
-    //addListeners();
 }
 
-function renderCanvas() {
+function renderGallery() {
+    let strHtmls = gImgs.map(function(img) {
+        return `<img class="img${img.id}" src="./meme-imgs/${img.id}.jpg" alt="" onclick="goToEditor(${img.id})">`
+    });
+    let elGallery = document.querySelector('.image-gallery');
+    elGallery.innerHTML = strHtmls.join('');
+}
+
+function reorderCanvas() {
     clearCanvas()
-    renderImg();
+    renderImg(gMeme.selectedImgId);
 }
 
-function renderImg() {
-    let imgID = getCurrImg();
+function renderImg(imgID) {
     let elImg = document.querySelector(`.img${imgID.toString()}`);
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height);
 }
@@ -51,6 +60,14 @@ function onEditTxt(e) {
 function onUpdateInput(e) {
     let newTxt = e.target.value;
     createNewLine(newTxt);
+}
+
+function goToEditor(imgID) {
+    document.querySelector('.image-gallery').style.display = 'none';
+    document.querySelector('.editor-container').style.display = 'block';
+    gMeme.selectedImgId = imgID;
+    renderImg(imgID);
+    initCanvas();
 }
 
 

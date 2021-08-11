@@ -10,8 +10,9 @@
     src: url(/fonts/impact.ttf);
 }
 
-.main-container {
+.editor-container {
     height: 90vh;
+    display: none;
 }
 
 .canvas-container {
