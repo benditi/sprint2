@@ -61,10 +61,11 @@ img.logo {
 
 .image-gallery {
     height: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     background-color: #383b42;
     width: 98%;
     border-radius: 8px;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -75,6 +76,10 @@ img {
     margin: 10px;
 }
 
+img:hover {
+    cursor: pointer;
+}
+
 
 /* EDITOR */
 
@@ -83,7 +88,7 @@ img {
     flex-grow: 1;
     display: none;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -97,7 +102,7 @@ canvas {
 
 .btns-container {
     height: 45%;
-    width: 486px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;

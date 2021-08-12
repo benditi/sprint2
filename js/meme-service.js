@@ -102,7 +102,7 @@ function createNewLine() {
         color: 'white',
         fontfamily: 'mpact',
         xline: 50,
-        yline: 100 + ((gMeme.lines.length - 1) * 40),
+        yline: 100 + ((gMeme.lines.length - 1) * 60),
     };
     gMeme.lines.push(newLine);
     plusOneIdx();
