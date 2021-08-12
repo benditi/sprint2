@@ -51,6 +51,10 @@ img.logo {
     grid-row: 1/2;
 }
 
+.gal-nav:hover {
+    cursor: pointer;
+}
+
 .about-nav {
     grid-column: 9/10;
     grid-row: 1/2;

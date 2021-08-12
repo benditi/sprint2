@@ -2,6 +2,7 @@
 
 var gCanvas;
 var gCtx;
+var gIsDrag = false;
 
 function init() {
     createImages(18);
@@ -16,10 +17,10 @@ function initCanvas() {
     let currTxt = gMeme.lines[gMeme.selectedLineIdx].txt;
     document.querySelector('input').value = currTxt;
     const input = document.querySelector('input');
+    getMobileChange();
     //listeners
     input.addEventListener('input', onEditTxt);
     window.addEventListener('resize', resizeCanvas);
-    getMobileChange();
 }
 
 function renderGallery() {
@@ -31,7 +32,7 @@ function renderGallery() {
 }
 
 function reOrderCanvas() {
-    clearCanvas()
+    clearCanvas();
     renderImg(gMeme.selectedImgId);
     let currLineIdx = gMeme.selectedLineIdx
     let lines = gMeme.lines;
@@ -111,4 +112,12 @@ function onSwitch() {
 
 function onMove(num) {
     moveLineUpDown(num);
+}
+
+function backtoGall() {
+    document.querySelector('.editor-container').style.display = 'none';
+    document.querySelector('.image-gallery').style.display = 'grid';
+    gMeme.lines.splice(1);
+    gMeme.lines[0].txt = 'I never eat Falafel';
+    gMeme.selectedLineIdx = 0;
 }
