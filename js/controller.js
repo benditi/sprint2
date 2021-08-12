@@ -21,6 +21,11 @@ function initCanvas() {
     //listeners
     input.addEventListener('input', onEditTxt);
     window.addEventListener('resize', resizeCanvas);
+    addMouseListeners();
+    addTouchListeners();
+
+    // var test = getLineDragged({ x: 50, y: 430 }, gMeme.lines[0]);
+    // console.log(test);
 }
 
 function renderGallery() {
@@ -110,7 +115,7 @@ function onSwitch() {
     document.querySelector('input.curr-txt').value = txt;
 }
 
-function onMove(num) {
+function onMoveLine(num) {
     moveLineUpDown(num);
 }
 
@@ -120,4 +125,42 @@ function backtoGall() {
     gMeme.lines.splice(1);
     gMeme.lines[0].txt = 'I never eat Falafel';
     gMeme.selectedLineIdx = 0;
+}
+
+//Grab Line functions
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchend', onUp)
+}
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+        }
+    }
+    return pos
+}
+
+function onDown(ev) {
+    const pos = getEvPos(ev)
+    if (!isRectangleClicked(pos)) return
+    gIsDrag = true;
+    gStartPos = pos
+    document.body.style.cursor = 'grabbing';
 }

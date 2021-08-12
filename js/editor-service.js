@@ -27,3 +27,20 @@ function drawRect(x, y) {
     gCtx.strokeStyle = 'black'
     gCtx.stroke()
 }
+
+function isRectangleClicked(clickedPos, currLine) {
+    let x = currLine.xline;
+    let y = currLine.yline;
+    if ((x - 5 <= clickedPos.x) && (clickedPos.x <= x + gDiffRect) && (y - 50 <= clickedPos.y) &&
+        (clickedPos.y <= y + 30)) {
+        return true;
+    } else return false;
+}
+
+function getLineDragged(clickedPos) {
+    debugger;
+    let lineIdx = gMeme.lines.findIndex(line =>
+        (isRectangleClicked(clickedPos, line))
+    );
+    return lineIdx;
+}

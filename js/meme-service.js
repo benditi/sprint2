@@ -58,10 +58,6 @@ function getMobileChange() {
     }
 }
 
-function plusOneIdx() {
-    gMeme.selectedLineIdx++;
-}
-
 function getCurrImg() {
     return gMeme.selectedImgId;
 }
@@ -105,7 +101,7 @@ function createNewLine() {
         yline: 100 + ((gMeme.lines.length - 1) * 60),
     };
     gMeme.lines.push(newLine);
-    plusOneIdx();
+    gMeme.selectedLineIdx++;
 }
 
 function switchLine() {
