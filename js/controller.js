@@ -10,6 +10,8 @@ function init() {
 }
 
 function initCanvas() {
+    debugger;
+
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     drawText(currLine.txt, currLine.xline, currLine.yline);
     let currTxt = gMeme.lines[gMeme.selectedLineIdx].txt;
@@ -17,6 +19,7 @@ function initCanvas() {
     const input = document.querySelector('input');
     //listeners
     input.addEventListener('input', onEditTxt);
+    window.addEventListener('resize', resizeCanvas);
 }
 
 function renderGallery() {
@@ -42,6 +45,28 @@ function reOrderCanvas() {
     let y = currLine.yline;
     drawRect(x, y);
 
+}
+
+function resizeCanvas() {
+    var elContainer = document.querySelector('.main-container');
+    // Note: changing the canvas dimension this way clears the canvas
+    let wi = window.innerWidth;
+    if (wi <= 718) {
+        gCanvas.height = 350;
+        gCanvas.width = 350;
+        gMeme.lines[0].size = 25;
+        gMeme.lines[0].yline = 300;
+        gSize = 25;
+
+
+    } else {
+        gCanvas.width = elContainer.offsetWidth - 560
+    }
+
+    console.log(wi);
+    // Unless needed, better keep height fixed.
+    // gCanvas.height = elContainer.offsetHeight - 400
+    reOrderCanvas();
 }
 
 function renderImg(imgID) {
@@ -92,25 +117,6 @@ function onSwitch() {
     document.querySelector('input.curr-txt').value = txt;
 }
 
-
-// Image Section
-// function onImgInput(ev) {
-//     loadImageFromInput(ev, renderImg)
-// }
-
-// function loadImageFromInput(ev, onImageReady) {
-// document.querySelector('.share-container').innerHTML = ''
-//     var reader = new FileReader()
-
-//     reader.onload = function(event) {
-//         var img = new Image()
-//         img.onload = onImageReady.bind(null, img)
-//         img.src = event.target.result
-//     }
-//     reader.readAsDataURL(ev.target.files[0])
-// }
-
-
-// function renderImg(img) {
-//     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
-// }
+function onMove(num) {
+    moveLineUpDown(num);
+}

@@ -1,5 +1,7 @@
 'use strict';
 
+var gSize = 40;
+var gYstart = 400;
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
@@ -9,7 +11,7 @@ var gMeme = {
         align: 'left',
         color: 'white',
         fontfamily: 'mpact',
-        xline: 50,
+        xline: 40,
         yline: 400,
     }]
 }
@@ -65,7 +67,7 @@ function editText(txt) {
 function createNewLine() {
     let newLine = {
         txt: '',
-        size: 40,
+        size: gSize,
         align: 'left',
         color: 'white',
         fontfamily: 'mpact',
@@ -85,4 +87,10 @@ function switchLine() {
     reOrderCanvas();
     let txt = currLine.txt;
     return txt;
+}
+
+function moveLineUpDown(num) {
+    let currLine = gMeme.lines[gMeme.selectedLineIdx];
+    currLine.yline += num;
+    reOrderCanvas();
 }

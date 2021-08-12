@@ -30,6 +30,27 @@ body {}
     color: white;
     background-color: #5970c1;
     background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    align-items: center;
+    /* justify-content: space-evenly;
+    align-items: center; */
+}
+
+img.logo {
+    height: 17px;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.gal-nav {
+    grid-column: 7/8;
+    grid-row: 1/2;
+}
+
+.about-nav {
+    grid-column: 9/10;
+    grid-row: 1/2;
 }
 
 
@@ -41,13 +62,14 @@ body {}
     width: 98%;
     border-radius: 8px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
 
 img {
     height: 50%;
     border-radius: 8px;
+    margin: 10px;
 }
 
 
@@ -56,7 +78,9 @@ img {
 .editor-container {
     height: 90vh;
     display: none;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -75,4 +99,57 @@ canvas {
     margin: 0 auto;
     /* outline: 1px solid black; */
     background-color: white;
+    border-radius: 15px;
+}
+
+.btns-container {
+    height: 18%;
+    width: 486px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input.curr-txt {
+    width: 84%;
+    height: 10%;
+    background-color: #ebeef3;
+}
+
+.large-btns {
+    margin: 5px;
+    width: 84%;
+    height: 10%;
+}
+
+.small-btns {
+    margin: 5px;
+    width: 84%;
+    height: 23%;
+    background-color: #19a59f;
+}
+
+
+/* HELPERS */
+
+.radius {
+    border-radius: 8px;
+}
+
+@media screen and (min-width: 718px) {
+    canvas {
+        /* height: 450px;
+        width: 450px; */
+    }
+    .editor-container {
+        flex-direction: unset;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .btns-container {
+        height: 450px;
+        width: 486px;
+        justify-content: space-between;
+    }
 }

@@ -13,41 +13,46 @@
 <body onload="init()">
     <main class="main-container">
         <div class="header">
-            MemeGenerator
+            <img class="logo" src="./imgs/LOGO.png" alt="">
+            <div class="gal-nav">Gallery</div>
+            <div class="about-nav">About</div>
         </div>
         <div class="editor-container">
-            <section class="canvas-container">
-                <canvas id="my-canvas" height="450" width="450"></canvas>
-            </section>
+            <canvas id="my-canvas" width="450" height="450"></canvas>
 
             <section class="btns-container">
                 <!-- input txt line -->
-                <input class="curr-txt" type="text">
-                <!-- <input type="text" placeholder="Add a line: "> -->
-                <select name="color" id="color" onchange="onSetColor()">
-                    <option selected>Color</option>
-                    <option value="yellow">yellow</option>
-                    <option value="orange">orange</option>
-                    <option value="red">red</option>
-                    <option value="pink">pink</option>
-                    <option value="purple">purple</option>
-                    <option value="blue">blue</option>
-                    <option value="green">green</option>
-                    <option value="black">black</option>
-                    <option value="brown">brown</option>
-                    <option value="grey">grey</option>
-                </select>
-                <select name="font" id="font" onchange="onSetFont()">
-                    <option selected>Font</option>
-                    <option value="Courier New">Courier New</option>
-                    <option value="Arial">Arial</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                    <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
-                </select>
-                <button class="addline btn" onclick="onCreateNewLine()">+</button>
-                <button class="font-up btn" onclick="onFontGrow(5)">A+</button>
-                <button class="font-down btn" onclick="onFontGrow(-5)">A-</button>
-                <button class="switch btn" onclick="onSwitch()">Switch</button>
+                <input class="curr-txt radius" type="text">
+                <div class="large-btns">
+                    <button class="addline btn" onclick="onCreateNewLine()">+</button>
+                    <button class="switch btn" onclick="onSwitch()">Switch</button>
+                    <button class="move-up btn" onclick="onMove(5)">Move Down</button>
+                    <button class="move-up btn" onclick="onMove(-5)">Move Up</button>
+                </div>
+                <div class="small-btns radius">
+                    <select name="color" id="color" onchange="onSetColor()">
+                        <option selected>Color</option>
+                        <option value="yellow">yellow</option>
+                        <option value="orange">orange</option>
+                        <option value="red">red</option>
+                        <option value="pink">pink</option>
+                        <option value="purple">purple</option>
+                        <option value="blue">blue</option>
+                        <option value="green">green</option>
+                        <option value="black">black</option>
+                        <option value="brown">brown</option>
+                        <option value="grey">grey</option>
+                    </select>
+                    <select name="font" id="font" onchange="onSetFont()">
+                        <option selected>Font</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                    </select>
+                    <button class="font-up btn" onclick="onFontGrow(5)">A+</button>
+                    <button class="font-down btn" onclick="onFontGrow(-5)">A-</button>
+                </div>
             </section>
         </div>
         <div class="image-gallery">
