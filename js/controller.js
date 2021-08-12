@@ -10,7 +10,6 @@ function init() {
 }
 
 function initCanvas() {
-    debugger;
 
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     drawText(currLine.txt, currLine.xline, currLine.yline);
@@ -20,6 +19,7 @@ function initCanvas() {
     //listeners
     input.addEventListener('input', onEditTxt);
     window.addEventListener('resize', resizeCanvas);
+    getMobileChange();
 }
 
 function renderGallery() {
@@ -48,22 +48,18 @@ function reOrderCanvas() {
 }
 
 function resizeCanvas() {
-    var elContainer = document.querySelector('.main-container');
     // Note: changing the canvas dimension this way clears the canvas
-    let wi = window.innerWidth;
-    if (wi <= 718) {
+    if (window.matchMedia("(min-width: 718px)").matches) {
         gCanvas.height = 350;
         gCanvas.width = 350;
         gMeme.lines[0].size = 25;
         gMeme.lines[0].yline = 300;
         gSize = 25;
-
-
     } else {
-        gCanvas.width = elContainer.offsetWidth - 560
+        console.log("Screen less than 500px")
     }
-
-    console.log(wi);
+    // let wi = window.innerWidth;
+    // if (wi <= 718) {
     // Unless needed, better keep height fixed.
     // gCanvas.height = elContainer.offsetHeight - 400
     reOrderCanvas();

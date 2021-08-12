@@ -28,6 +28,18 @@ var gImgs = [{
     }
 ];
 
+function getMobileChange() {
+    var iWidth = document.documentElement.clientWidth;
+    if (iWidth <= 718) {
+        gCanvas.height = 350;
+        gCanvas.width = 350;
+        gMeme.lines[0].size = 25;
+        gMeme.lines[0].yline = 300;
+        gSize = 25;
+        reOrderCanvas();
+    }
+}
+
 function plusOneIdx() {
     gMeme.selectedLineIdx++;
 }
