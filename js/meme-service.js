@@ -16,17 +16,34 @@ var gMeme = {
     }]
 }
 
-var gImgs = [{
-        id: 1,
-        url: './meme-imgs/1.jpg',
-        keywords: ['angry']
-    },
-    {
-        id: 2,
-        url: './meme-imgs/2.jpg',
-        keywords: ['love', 'happy']
-    }
+var gImgs = [
+    // {
+    //     id: 1,
+    //     url: './meme-imgs/1.jpg',
+    //     keywords: ['angry']
+    // },
+    // {
+    //     id: 2,
+    //     url: './meme-imgs/2.jpg',
+    //     keywords: ['love', 'happy']
+    // }
 ];
+
+function createImg(idx) {
+    return {
+        id: idx,
+        url: `./meme-imgs/${idx}.jpg`,
+        keywords: ['love', 'smile']
+    }
+}
+
+function createImages(num) {
+    for (var i = 1; i < num + 1; i++) {
+        let img = createImg(i);
+        gImgs.push(img);
+    }
+}
+
 
 function getMobileChange() {
     var iWidth = document.documentElement.clientWidth;
@@ -36,6 +53,7 @@ function getMobileChange() {
         gMeme.lines[0].size = 25;
         gMeme.lines[0].yline = 300;
         gSize = 25;
+        gDiffRect = 250;
         reOrderCanvas();
     }
 }

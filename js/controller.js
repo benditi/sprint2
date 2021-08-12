@@ -4,13 +4,13 @@ var gCanvas;
 var gCtx;
 
 function init() {
+    createImages(18);
     renderGallery();
     gCanvas = document.getElementById('my-canvas')
     gCtx = gCanvas.getContext('2d');
 }
 
 function initCanvas() {
-
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     drawText(currLine.txt, currLine.xline, currLine.yline);
     let currTxt = gMeme.lines[gMeme.selectedLineIdx].txt;
@@ -55,13 +55,9 @@ function resizeCanvas() {
         gMeme.lines[0].size = 25;
         gMeme.lines[0].yline = 300;
         gSize = 25;
-    } else {
-        console.log("Screen less than 500px")
+        gDiffRect = 250;
     }
-    // let wi = window.innerWidth;
-    // if (wi <= 718) {
     // Unless needed, better keep height fixed.
-    // gCanvas.height = elContainer.offsetHeight - 400
     reOrderCanvas();
 }
 

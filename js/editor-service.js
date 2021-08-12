@@ -1,4 +1,5 @@
 'use strict';
+var gDiffRect = 300;
 
 function drawText(txt, x, y) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx]
@@ -16,7 +17,7 @@ function drawRect(x, y) {
     gCtx.beginPath()
     const sx = x - 5;
     const sy = y - 50;
-    const ex = x + 300;
+    const ex = x + gDiffRect;
     const ey = y + 30;
     const dx = ex - sx;
     const dy = ey - sy;
