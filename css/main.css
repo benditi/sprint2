@@ -55,7 +55,7 @@ img.logo {
     cursor: pointer;
 }
 
-.about-nav {
+.memes-nav {
     grid-column: 9/10;
     grid-row: 1/2;
 }
@@ -143,6 +143,14 @@ input.curr-txt {
 
 .small-btns select {
     height: 50%;
+}
+
+
+/* MEMES GALLERY */
+
+.saved-gallery {
+    display: none;
+    height: 80%;
 }
 
 

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="preload" as="font" href="/fonts/impact.ttf" type="font/ttf" crossorigin="anonymous">
     <title>David's Meme Generator</title>
 </head>
 
@@ -15,7 +16,7 @@
         <div class="header">
             <img class="logo" src="./imgs/LOGO.png" alt="">
             <div class="gal-nav" onclick="backtoGall()">Gallery</div>
-            <div class="about-nav">About</div>
+            <div class="memes-nav" onclick="goToMemes()">Memes</div>
         </div>
         <div class="editor-container">
             <canvas id="my-canvas" width="450" height="450"></canvas>
@@ -52,16 +53,22 @@
                     </select>
                     <button class="font-up btn" onclick="onFontGrow(5)">A+</button>
                     <button class="font-down btn" onclick="onFontGrow(-5)">A-</button>
+                    <button class="save btn" onclick="onSaveCanvas()">Save-</button>
                 </div>
             </section>
         </div>
         <div class="image-gallery">
+        </div>
+        <div class="saved-gallery">
+            <img id=imageid src="">
+            <canvas id="saved-canvas" width="450" height="450"></canvas>
         </div>
     </main>
 
 
 
     <script src="./js/upload-service.js"></script>
+    <script src="./js/storage-service.js"></script>
     <script src="./js/editor-service.js"></script>
     <script src="./js/meme-service.js"></script>
     <script src="./js/controller.js"></script>

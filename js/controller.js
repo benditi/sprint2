@@ -71,7 +71,7 @@ function resizeCanvas() {
 
 function renderImg(imgID) {
     let elImg = document.querySelector(`.img${imgID.toString()}`);
-    gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height);
+    gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height); //the important line for upload
 }
 
 function clearCanvas() {
@@ -134,6 +134,10 @@ function backtoGall() {
     gMeme.selectedLineIdx = 0;
 }
 
+function onSaveCanvas() {
+    uploadImg();
+}
+
 //Grab Line functions
 
 function addMouseListeners() {
@@ -191,3 +195,30 @@ function onUp() {
     gMeme.lines[gMeme.selectedLineIdx].isDrag = false;
     document.body.style.cursor = 'grab';
 }
+
+//Memes Gallery functions
+function goToMemes() {
+    document.querySelector('.editor-container').style.display = 'none';
+    document.querySelector('.saved-gallery').style.display = 'grid';
+    let imgUrl = loadFromStorage(KEY);
+    console.log(imgUrl);
+    onUploadToMemes(imgUrl);
+}
+
+function onUploadToMemes(imgUrl) {
+    let elImg = document.getElementById("imageid");
+    elImg.src = `./${imgUrl}`;
+    getBase64Image(elImg);
+}
+
+function getBase64Image(img) {
+    var newCanvas = document.getElementById("saved-canvas");
+    newCanvas.width = img.width;
+    newCanvas.height = img.height;
+    var ctx = newCanvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    var dataURL = newCanvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+var base64 = getBase64Image(document.getElementById("imageid"));
