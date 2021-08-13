@@ -38,9 +38,10 @@ function isRectangleClicked(clickedPos, currLine) {
 }
 
 function getLineDragged(clickedPos) {
-    debugger;
     let lineIdx = gMeme.lines.findIndex(line =>
         (isRectangleClicked(clickedPos, line))
     );
-    return lineIdx;
+    if (lineIdx === -1) return;
+    gMeme.selectedLineIdx = lineIdx;
+    return gMeme.lines[lineIdx];
 }

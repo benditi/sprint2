@@ -2,7 +2,9 @@
 
 var gCanvas;
 var gCtx;
-var gIsDrag = false;
+var gStartPos;
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
+
 
 function init() {
     createImages(18);
@@ -124,21 +126,26 @@ function backtoGall() {
     document.querySelector('.image-gallery').style.display = 'grid';
     gMeme.lines.splice(1);
     gMeme.lines[0].txt = 'I never eat Falafel';
+    gMeme.lines[0].size = 40;
+    gMeme.lines[0].xline = 40;
+    gMeme.lines[0].yline = 400;
+    gMeme.lines[0].color = 'white';
+    gMeme.lines[0].fontfamily = 'mpact';
     gMeme.selectedLineIdx = 0;
 }
 
 //Grab Line functions
 
 function addMouseListeners() {
-    gElCanvas.addEventListener('mousemove', onMove)
-    gElCanvas.addEventListener('mousedown', onDown)
-    gElCanvas.addEventListener('mouseup', onUp)
+    gCanvas.addEventListener('mousemove', onMove)
+    gCanvas.addEventListener('mousedown', onDown)
+    gCanvas.addEventListener('mouseup', onUp)
 }
 
 function addTouchListeners() {
-    gElCanvas.addEventListener('touchmove', onMove)
-    gElCanvas.addEventListener('touchstart', onDown)
-    gElCanvas.addEventListener('touchend', onUp)
+    gCanvas.addEventListener('touchmove', onMove)
+    gCanvas.addEventListener('touchstart', onDown)
+    gCanvas.addEventListener('touchend', onUp)
 }
 
 function getEvPos(ev) {
@@ -159,8 +166,28 @@ function getEvPos(ev) {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    if (!isRectangleClicked(pos)) return
-    gIsDrag = true;
-    gStartPos = pos
+    if (!getLineDragged(pos)) return;
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = true;
+    gStartPos = pos;
     document.body.style.cursor = 'grabbing';
+}
+
+function onMove(ev) {
+    let draggedLine = gMeme.lines[gMeme.selectedLineIdx];
+    if (!draggedLine) return;
+    if (draggedLine.isDrag) {
+        const pos = getEvPos(ev)
+        const dx = pos.x - gStartPos.x
+        const dy = pos.y - gStartPos.y
+        draggedLine.xline += dx;
+        draggedLine.yline += dy;
+        gStartPos = pos
+        reOrderCanvas();
+    }
+
+}
+
+function onUp() {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = false;
+    document.body.style.cursor = 'grab';
 }
