@@ -152,6 +152,8 @@ input.curr-txt {
 }
 
 .large-btns a {
+    width: 26px;
+    text-align: center;
     font-size: 1.5rem;
     background-color: purple;
     color: black;
