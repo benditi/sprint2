@@ -2,6 +2,7 @@ var KEY = 'canvasDB';
 var gSavedMemes;
 
 function uploadImg() {
+    reOrderwithout()
     _createMemes();
     const imgDataUrl = gCanvas.toDataURL("image/jpeg");
     gSavedMemes.push(imgDataUrl);

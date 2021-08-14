@@ -35,6 +35,7 @@ function renderGallery() {
     elGallery.innerHTML = strHtmls.join('');
 }
 
+////prints canvas with image and all saved lines
 function reOrderCanvas() {
     clearCanvas();
     renderImg(gMeme.selectedImgId);
@@ -49,9 +50,20 @@ function reOrderCanvas() {
     let x = currLine.xline;
     let y = currLine.yline;
     drawRect(x, y);
-
 }
-
+//prints canvas without rectangular
+function reOrderwithout() {
+    clearCanvas();
+    renderImg(gMeme.selectedImgId);
+    let currLineIdx = gMeme.selectedLineIdx
+    let lines = gMeme.lines;
+    lines.forEach((line, idx) => {
+        gMeme.selectedLineIdx = idx;
+        drawText(line.txt, line.xline, line.yline)
+    });
+    gMeme.selectedLineIdx = currLineIdx;
+}
+// changes canvas size and line properties when screen width changes at specific breakpoint
 function resizeCanvas() {
     // Note: changing the canvas dimension this way clears the canvas
     if (window.matchMedia("(min-width: 718px)").matches) {
@@ -134,6 +146,24 @@ function goToGall() {
 
 function onSaveCanvas() {
     uploadImg();
+    showMessage();
+}
+
+function showMessage() {
+    let elMessage = document.querySelector('.message-pop');
+    elMessage.style.display = 'block';
+    setTimeout(function() {
+        let elMemesNav = document.querySelector('.memes-nav');
+        highlight(elMemesNav);
+        elMessage.style.display = 'none';
+    }, 1500);
+}
+
+function highlight(obj) {
+    obj.classList.toggle('highlite');
+    setTimeout(function() {
+        obj.classList.toggle('highlite');
+    }, 1500);
 }
 
 //Grab Line functions
@@ -196,7 +226,6 @@ function onUp() {
 
 //Memes Gallery functions
 function goToMemes() {
-    debugger;
     document.querySelector('.editor-container').style.display = 'none';
     document.querySelector('.image-gallery').style.display = 'none';
     document.querySelector('.saved-gallery').style.display = 'grid';

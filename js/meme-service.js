@@ -45,7 +45,7 @@ function createImages(num) {
     }
 }
 
-
+//Sets mobile properties when user logs in directly from a mobile
 function getMobileChange() {
     var iWidth = document.documentElement.clientWidth;
     if (iWidth <= 718) {

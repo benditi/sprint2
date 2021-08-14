@@ -17,6 +17,7 @@
             <img class="logo" src="./imgs/LOGO.png" alt="">
             <div class="gal-nav hover" onclick="goToGall()">Gallery</div>
             <div class="memes-nav hover" onclick="goToMemes()">Memes</div>
+            <div class="message-pop">Saved</div>
         </div>
         <div class="editor-container">
             <canvas id="my-canvas" width="450" height="450"></canvas>
@@ -25,10 +26,10 @@
                 <!-- input txt line -->
                 <input class="curr-txt radius" type="text">
                 <div class="large-btns">
-                    <button class="addline btn" onclick="onCreateNewLine()">Add</button>
-                    <button class="switch btn" onclick="onSwitch()">Switch</button>
-                    <button class="move-up btn" onclick="onMoveLine(5)">Move Down</button>
-                    <button class="move-up btn" onclick="onMoveLine(-5)">Move Up</button>
+                    <button class="addline btn" onclick="onCreateNewLine()"><img src="./ICONS/add.png" alt=""></button>
+                    <button class="switch btn" onclick="onSwitch()"><img src="./ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                    <button class="move-up btn" onclick="onMoveLine(5)">&#8595</button>
+                    <button class="move-up btn" onclick="onMoveLine(-5)">&#8593</button>
                 </div>
                 <div class="small-btns radius">
                     <select name="color" id="color" onchange="onSetColor()">
@@ -53,7 +54,7 @@
                     </select>
                     <button class="font-up btn" onclick="onFontGrow(5)">A+</button>
                     <button class="font-down btn" onclick="onFontGrow(-5)">A-</button>
-                    <button class="save btn" onclick="onSaveCanvas()">Save-</button>
+                    <button class="save btn" onclick="onSaveCanvas()">Save</button>
                 </div>
             </section>
         </div>

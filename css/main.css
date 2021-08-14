@@ -28,7 +28,6 @@ body {
     height: 10%;
     width: 98%;
     margin-top: 10px;
-    margin-bottom: 10px;
     text-align: center;
     border-radius: 37px;
     color: white;
@@ -57,6 +56,23 @@ img.logo {
     grid-row: 1/2;
 }
 
+.memes-nav.highlite {
+    background-color: #fff;
+    color: #33be6d;
+    border-radius: 3px;
+}
+
+.message-pop {
+    display: none;
+    position: absolute;
+    background-color: lightgreen;
+    color: #fff;
+    top: 0;
+    right: 0;
+    height: 25px;
+    width: 200px;
+}
+
 
 /* GALLERY */
 
@@ -71,7 +87,7 @@ img.logo {
     align-items: center;
 }
 
-img {
+.image-gallery img {
     height: 150px;
     border-radius: 8px;
     margin: 10px;
@@ -89,7 +105,6 @@ img:hover {
     flex-grow: 1;
     display: none;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -102,18 +117,20 @@ canvas {
 }
 
 .btns-container {
-    height: 45%;
+    height: 50%;
     width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
 }
 
 input.curr-txt {
-    height: 15%;
+    height: 20%;
     width: 84%;
     background-color: #ebeef3;
+    font-size: 1.6rem;
 }
 
 .large-btns {
@@ -122,6 +139,15 @@ input.curr-txt {
     width: 84%;
     display: flex;
     justify-content: center;
+}
+
+.large-btns img {
+    height: 12px;
+}
+
+.move-up.btn {
+    font-size: 1rem;
+    font-weight: bolder;
 }
 
 .small-btns {
@@ -135,6 +161,14 @@ input.curr-txt {
 }
 
 .small-btns button {
+    height: 50%;
+}
+
+.small-btns img {
+    height: 18px;
+}
+
+.small-btns option img {
     height: 50%;
 }
 
@@ -158,7 +192,7 @@ input.curr-txt {
 }
 
 .saved-gallery img {
-    height: 200px;
+    height: 150px;
     border-radius: 8px;
     margin: 10px;
 }
@@ -180,7 +214,7 @@ input.curr-txt {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
-    img {
+    .image-gallery img {
         height: 200px;
     }
     canvas {
@@ -193,11 +227,24 @@ input.curr-txt {
         align-items: center;
     }
     .btns-container {
+        flex-grow: 0;
         height: 450px;
         width: 486px;
         justify-content: space-between;
     }
     input.curr-txt {
         height: 10%;
+        font-size: 1rem;
+    }
+    .large-btns img {
+        height: 16px;
+    }
+    .move-up.btn {
+        font-size: 1.5rem;
+    }
+    .saved-gallery img {
+        height: 200px;
+        border-radius: 8px;
+        margin: 10px;
     }
 }
