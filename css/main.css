@@ -20,7 +20,7 @@ body {
     background-color: #22252c;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -28,6 +28,7 @@ body {
     height: 10%;
     width: 98%;
     margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
     border-radius: 37px;
     color: white;
@@ -49,10 +50,6 @@ img.logo {
 .gal-nav {
     grid-column: 7/8;
     grid-row: 1/2;
-}
-
-.gal-nav:hover {
-    cursor: pointer;
 }
 
 .memes-nav {
@@ -151,6 +148,19 @@ input.curr-txt {
 .saved-gallery {
     display: none;
     height: 80%;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    background-color: #383b42;
+    width: 98%;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1
+}
+
+.saved-gallery img {
+    height: 200px;
+    border-radius: 8px;
+    margin: 10px;
 }
 
 
@@ -158,6 +168,10 @@ input.curr-txt {
 
 .radius {
     border-radius: 8px;
+}
+
+.hover:hover {
+    cursor: pointer;
 }
 
 @media screen and (min-width: 718px) {

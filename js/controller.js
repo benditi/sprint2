@@ -25,9 +25,6 @@ function initCanvas() {
     window.addEventListener('resize', resizeCanvas);
     addMouseListeners();
     addTouchListeners();
-
-    // var test = getLineDragged({ x: 50, y: 430 }, gMeme.lines[0]);
-    // console.log(test);
 }
 
 function renderGallery() {
@@ -121,8 +118,9 @@ function onMoveLine(num) {
     moveLineUpDown(num);
 }
 
-function backtoGall() {
+function goToGall() {
     document.querySelector('.editor-container').style.display = 'none';
+    document.querySelector('.saved-gallery').style.display = 'none';
     document.querySelector('.image-gallery').style.display = 'grid';
     gMeme.lines.splice(1);
     gMeme.lines[0].txt = 'I never eat Falafel';
@@ -198,27 +196,13 @@ function onUp() {
 
 //Memes Gallery functions
 function goToMemes() {
+    debugger;
     document.querySelector('.editor-container').style.display = 'none';
+    document.querySelector('.image-gallery').style.display = 'none';
     document.querySelector('.saved-gallery').style.display = 'grid';
-    let imgUrl = loadFromStorage(KEY);
-    console.log(imgUrl);
-    onUploadToMemes(imgUrl);
+    let storedImgs = loadFromStorage(KEY);
+    let strHtmls = storedImgs.map((image, idx) => {
+        return `<img name="img${idx}" src="${image}">`
+    });
+    document.querySelector('.saved-gallery').innerHTML = strHtmls.join('');
 }
-
-function onUploadToMemes(imgUrl) {
-    let elImg = document.getElementById("imageid");
-    elImg.src = `./${imgUrl}`;
-    getBase64Image(elImg);
-}
-
-function getBase64Image(img) {
-    var newCanvas = document.getElementById("saved-canvas");
-    newCanvas.width = img.width;
-    newCanvas.height = img.height;
-    var ctx = newCanvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    var dataURL = newCanvas.toDataURL("image/png");
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
-
-var base64 = getBase64Image(document.getElementById("imageid"));
