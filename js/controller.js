@@ -18,6 +18,7 @@ function initCanvas() {
     drawText(currLine.txt, currLine.xline, currLine.yline);
     let currTxt = gMeme.lines[gMeme.selectedLineIdx].txt;
     document.querySelector('input').value = currTxt;
+    focusInput();
     const input = document.querySelector('input');
     getMobileChange();
     //listeners
@@ -35,7 +36,7 @@ function renderGallery() {
     elGallery.innerHTML = strHtmls.join('');
 }
 
-////prints canvas with image and all saved lines
+//prints canvas with image and all saved lines
 function reOrderCanvas() {
     clearCanvas();
     renderImg(gMeme.selectedImgId);
@@ -65,7 +66,6 @@ function reOrderwithout() {
 }
 // changes canvas size and line properties when screen width changes at specific breakpoint
 function resizeCanvas() {
-    // Note: changing the canvas dimension this way clears the canvas
     if (window.matchMedia("(min-width: 718px)").matches) {
         gCanvas.height = 350;
         gCanvas.width = 350;
@@ -74,13 +74,12 @@ function resizeCanvas() {
         gSize = 25;
         gDiffRect = 250;
     }
-    // Unless needed, better keep height fixed.
     reOrderCanvas();
 }
 
 function renderImg(imgID) {
     let elImg = document.querySelector(`.img${imgID.toString()}`);
-    gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height); //the important line for upload
+    gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height);
 }
 
 function clearCanvas() {
@@ -110,7 +109,30 @@ function onCreateNewLine() {
     let newTxt = document.querySelector('input.curr-txt').value;
     newTxt = '';
     document.querySelector('input.curr-txt').value = newTxt;
+    focusInput();
+}
 
+function onDeleteMeme() {
+    clearCanvas();
+    renderImg(gMeme.selectedImgId);
+    zeroMemesLines();
+    let line = gMeme.lines[0]
+    drawText(line.txt, line.xline, line.yline)
+}
+
+function onSwitch() {
+    let txt = switchLine();
+    document.querySelector('input.curr-txt').value = txt;
+    focusInput();
+}
+
+function onMoveLine(num) {
+    moveLineUpDown(num);
+}
+
+function onSaveCanvas() {
+    uploadImg();
+    showMessage();
 }
 
 function goToEditor(imgID) {
@@ -121,32 +143,11 @@ function goToEditor(imgID) {
     initCanvas();
 }
 
-function onSwitch() {
-    let txt = switchLine();
-    document.querySelector('input.curr-txt').value = txt;
-}
-
-function onMoveLine(num) {
-    moveLineUpDown(num);
-}
-
 function goToGall() {
     document.querySelector('.editor-container').style.display = 'none';
     document.querySelector('.saved-gallery').style.display = 'none';
     document.querySelector('.image-gallery').style.display = 'grid';
-    gMeme.lines.splice(1);
-    gMeme.lines[0].txt = 'I never eat Falafel';
-    gMeme.lines[0].size = 40;
-    gMeme.lines[0].xline = 40;
-    gMeme.lines[0].yline = 400;
-    gMeme.lines[0].color = 'white';
-    gMeme.lines[0].fontfamily = 'mpact';
-    gMeme.selectedLineIdx = 0;
-}
-
-function onSaveCanvas() {
-    uploadImg();
-    showMessage();
+    zeroMemesLines();
 }
 
 function showMessage() {
@@ -164,6 +165,10 @@ function highlight(obj) {
     setTimeout(function() {
         obj.classList.toggle('highlite');
     }, 1500);
+}
+
+function focusInput() {
+    document.querySelector('input').focus();
 }
 
 //Grab Line functions

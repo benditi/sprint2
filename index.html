@@ -26,13 +26,14 @@
                 <!-- input txt line -->
                 <input class="curr-txt radius" type="text">
                 <div class="large-btns">
-                    <button class="addline btn" onclick="onCreateNewLine()"><img src="./ICONS/add.png" alt=""></button>
-                    <button class="switch btn" onclick="onSwitch()"><img src="./ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
-                    <button class="move-up btn" onclick="onMoveLine(5)">&#8595</button>
-                    <button class="move-up btn" onclick="onMoveLine(-5)">&#8593</button>
+                    <button class="addline btn radius" onclick="onCreateNewLine()"><img src="./ICONS/add.png" alt=""></button>
+                    <button class="switch btn radius" onclick="onSwitch()"><img src="./ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                    <button class="delete btn radius" onclick="onDeleteMeme()"><img src="./ICONS/trash.png" alt=""></button>
+                    <button class="move-up btn radius" onclick="onMoveLine(5)">&#8595</button>
+                    <button class="move-up btn radius" onclick="onMoveLine(-5)">&#8593</button>
                 </div>
                 <div class="small-btns radius">
-                    <select name="color" id="color" onchange="onSetColor()">
+                    <select class="radius" name="color" id="color" onchange="onSetColor()">
                         <option selected>Color</option>
                         <option value="yellow">yellow</option>
                         <option value="orange">orange</option>
@@ -45,16 +46,17 @@
                         <option value="brown">brown</option>
                         <option value="grey">grey</option>
                     </select>
-                    <select name="font" id="font" onchange="onSetFont()">
+                    <select class="radius" name="font" id="font" onchange="onSetFont()">
                         <option selected>Font</option>
-                        <option value="Courier New">Courier New</option>
+                        <option value="Trebuchet MS">Trebuchet MS</option>
                         <option value="Arial">Arial</option>
                         <option value="Times New Roman">Times New Roman</option>
                         <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                        <option value="mpact">Impact</option>
                     </select>
-                    <button class="font-up btn" onclick="onFontGrow(5)">A+</button>
-                    <button class="font-down btn" onclick="onFontGrow(-5)">A-</button>
-                    <button class="save btn" onclick="onSaveCanvas()">Save</button>
+                    <button class="font-up btn radius" onclick="onFontGrow(5)">A+</button>
+                    <button class="font-down btn radius" onclick="onFontGrow(-5)">A-</button>
+                    <button class="save btn radius" onclick="onSaveCanvas()">Save</button>
                 </div>
             </section>
         </div>

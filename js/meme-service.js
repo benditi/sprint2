@@ -17,18 +17,7 @@ var gMeme = {
     }]
 }
 
-var gImgs = [
-    // {
-    //     id: 1,
-    //     url: './meme-imgs/1.jpg',
-    //     keywords: ['angry']
-    // },
-    // {
-    //     id: 2,
-    //     url: './meme-imgs/2.jpg',
-    //     keywords: ['love', 'happy']
-    // }
-];
+var gImgs = [];
 
 function createImg(idx) {
     return {
@@ -88,7 +77,6 @@ function editText(txt) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.txt = txt;
     reOrderCanvas()
-        // drawText(currLine.txt, currLine.xline, currLine.yline)
 }
 
 function createNewLine() {
@@ -121,4 +109,16 @@ function moveLineUpDown(num) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.yline += num;
     reOrderCanvas();
+}
+
+function zeroMemesLines() {
+    gMeme.lines.splice(1);
+    gMeme.lines[0].txt = 'I never eat Falafel';
+    gMeme.lines[0].size = 40;
+    gMeme.lines[0].xline = 40;
+    gMeme.lines[0].yline = 400;
+    gMeme.lines[0].color = 'white';
+    gMeme.lines[0].fontfamily = 'mpact';
+    gMeme.selectedLineIdx = 0;
+    getMobileChange();
 }

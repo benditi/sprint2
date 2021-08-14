@@ -27,7 +27,9 @@ body {
 .header {
     height: 10%;
     width: 98%;
+    padding: 10px;
     margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
     border-radius: 37px;
     color: white;
@@ -130,7 +132,9 @@ input.curr-txt {
     height: 20%;
     width: 84%;
     background-color: #ebeef3;
-    font-size: 1.6rem;
+    font-size: 1rem;
+    padding: 4px;
+    box-shadow: 1px 2px 0 #bbc4d1, inset 0 2px 0 #ffffff;
 }
 
 .large-btns {
@@ -138,11 +142,25 @@ input.curr-txt {
     height: 10%;
     width: 84%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
+
+.large-btns button {}
 
 .large-btns img {
     height: 12px;
+}
+
+.addline.btn {
+    background-color: lightgreen;
+}
+
+.switch.btn {
+    background-color: lightskyblue;
+}
+
+.delete.btn {
+    background-color: red;
 }
 
 .move-up.btn {
@@ -154,7 +172,7 @@ input.curr-txt {
     margin: 5px;
     height: 23%;
     width: 84%;
-    background-color: #19a59f;
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,6 +180,8 @@ input.curr-txt {
 
 .small-btns button {
     height: 50%;
+    box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-style: solid;
 }
 
 .small-btns img {
@@ -174,6 +194,7 @@ input.curr-txt {
 
 .small-btns select {
     height: 50%;
+    box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
 }
 
 
@@ -182,7 +203,7 @@ input.curr-txt {
 .saved-gallery {
     display: none;
     height: 80%;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     background-color: #383b42;
     width: 98%;
     border-radius: 8px;
@@ -201,12 +222,14 @@ input.curr-txt {
 /* HELPERS */
 
 .radius {
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .hover:hover {
     cursor: pointer;
 }
+
+.shadowbox {}
 
 @media screen and (min-width: 718px) {
     .image-gallery {
@@ -225,6 +248,7 @@ input.curr-txt {
         flex-direction: unset;
         justify-content: space-evenly;
         align-items: center;
+        /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
     }
     .btns-container {
         flex-grow: 0;
@@ -241,6 +265,10 @@ input.curr-txt {
     }
     .move-up.btn {
         font-size: 1.5rem;
+    }
+    .small-btns {
+        background-color: #19a59f;
+        justify-content: space-around;
     }
     .saved-gallery img {
         height: 200px;

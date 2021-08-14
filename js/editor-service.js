@@ -1,5 +1,5 @@
 'use strict';
-var gDiffRect = 300;
+var gDiffRect = 380;
 
 function drawText(txt, x, y) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx]
