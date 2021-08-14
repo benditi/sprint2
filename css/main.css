@@ -151,6 +151,18 @@ input.curr-txt {
     height: 12px;
 }
 
+.large-btns a {
+    font-size: 1.5rem;
+    background-color: purple;
+    color: black;
+    border-radius: 6px;
+    text-decoration-line: none;
+    text-decoration-style: none;
+    border-width: 1px;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
 .addline.btn {
     background-color: lightgreen;
 }

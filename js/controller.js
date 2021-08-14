@@ -231,6 +231,11 @@ function onUp() {
     }, 300)
 }
 
+function downloadImg(elLink) {
+    var imgContent = gCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
+
 //Memes Gallery functions
 function goToMemes() {
     document.querySelector('.editor-container').style.display = 'none';
