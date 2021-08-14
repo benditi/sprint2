@@ -221,12 +221,14 @@ function onMove(ev) {
         gStartPos = pos
         reOrderCanvas();
     }
-
 }
 
 function onUp() {
     gMeme.lines[gMeme.selectedLineIdx].isDrag = false;
     document.body.style.cursor = 'grab';
+    setTimeout(function() {
+        document.body.style.cursor = 'auto';
+    }, 300)
 }
 
 //Memes Gallery functions

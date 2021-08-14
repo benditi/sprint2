@@ -69,6 +69,7 @@ function setFont(font) {
 function setFontSize(num) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.size += num;
+    gHiRect += num * 1.5;
     reOrderCanvas()
     drawText(currLine.txt, currLine.xline, currLine.yline)
 }
