@@ -38,8 +38,8 @@ function createImages(num) {
 function getMobileChange() {
     var iWidth = document.documentElement.clientWidth;
     if (iWidth <= 718) {
-        gCanvas.height = 350;
-        gCanvas.width = 350;
+        gCanvas.height = 330;
+        gCanvas.width = 330;
         gMeme.lines[0].size = 25;
         gMeme.lines[0].yline = 300;
         gSize = 25;

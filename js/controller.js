@@ -67,8 +67,8 @@ function reOrderwithout() {
 // changes canvas size and line properties when screen width changes at specific breakpoint
 function resizeCanvas() {
     if (window.matchMedia("(min-width: 718px)").matches) {
-        gCanvas.height = 350;
-        gCanvas.width = 350;
+        gCanvas.height = 330;
+        gCanvas.width = 330;
         gMeme.lines[0].size = 25;
         gMeme.lines[0].yline = 300;
         gSize = 25;
