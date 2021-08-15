@@ -20,7 +20,6 @@ function initCanvas() {
     document.querySelector('input').value = currTxt;
     focusInput();
     const input = document.querySelector('input');
-    getMobileChange();
     //listeners
     input.addEventListener('input', onEditTxt);
     // window.addEventListener('resize', resizeCanvas);
@@ -161,6 +160,7 @@ function goToEditor(imgID) {
     gMeme.selectedImgId = imgID;
     renderImg(imgID);
     initCanvas();
+    // document.querySelector('.gal-link').classList.toggle('picked');
 }
 
 function goToGall() {
@@ -168,22 +168,27 @@ function goToGall() {
     document.querySelector('.saved-gallery').style.display = 'none';
     document.querySelector('.image-gallery').style.display = 'grid';
     zeroMemesLines();
+    // document.querySelector('.memes-link').classList.toggle('picked');
+    // document.querySelector('.gal-link').classList.toggle('picked');
+
 }
+
+
 
 function showMessage() {
     let elMessage = document.querySelector('.message-pop');
     elMessage.style.display = 'block';
     setTimeout(function() {
-        let elMemesNav = document.querySelector('.memes-nav');
-        highlight(elMemesNav);
+        let elMemesNav = document.querySelector('.memes-link');
+        highlightSavedMemes(elMemesNav);
         elMessage.style.display = 'none';
     }, 1500);
 }
 
-function highlight(obj) {
-    obj.classList.toggle('highlite');
+function highlightSavedMemes(el) {
+    el.classList.toggle('highlite');
     setTimeout(function() {
-        obj.classList.toggle('highlite');
+        el.classList.toggle('highlite');
     }, 1500);
 }
 
@@ -261,6 +266,8 @@ function goToMemes() {
     document.querySelector('.editor-container').style.display = 'none';
     document.querySelector('.image-gallery').style.display = 'none';
     document.querySelector('.saved-gallery').style.display = 'grid';
+    // document.querySelector('.memes-link').classList.toggle('picked');
+    // document.querySelector('.gal-link').classList.toggle('picked');
     let storedImgs = loadFromStorage(KEY);
     let strHtmls = storedImgs.map((image, idx) => {
         return `<img name="img${idx}" src="${image}">`

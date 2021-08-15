@@ -51,13 +51,13 @@ img.logo {
     grid-row: 1/2;
 }
 
-.gal-nav {
+.gal-link {
     grid-column: 7/8;
     grid-row: 1/2;
     font-family: poppinsmedium;
 }
 
-.memes-nav {
+.memes-link {
     grid-column: 9/10;
     grid-row: 1/2;
     font-family: poppinsmedium;
@@ -109,6 +109,7 @@ img:hover {
 /* EDITOR */
 
 .editor-container {
+    display: flex;
     height: 80%;
     flex-grow: 1;
     display: none;
@@ -226,7 +227,7 @@ input.curr-txt {
 /* MEMES GALLERY */
 
 .saved-gallery {
-    display: none;
+    display: grid;
     height: 80%;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     background-color: #383b42;
@@ -254,7 +255,15 @@ input.curr-txt {
     cursor: pointer;
 }
 
-.shadowbox {}
+.display-none {
+    display: none;
+}
+
+.picked {
+    color: #383434;
+    background-color: #ffffff;
+    border-radius: 12px;
+}
 
 @media screen and (min-width: 880px) {
     .image-gallery {

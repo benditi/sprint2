@@ -34,21 +34,6 @@ function createImages(num) {
     }
 }
 
-//Sets mobile properties when user logs in directly from a mobile
-// function getMobileChange() {
-//     var iWidth = document.documentElement.clientWidth;
-//     if (iWidth <= 718) {
-//         gCanvas.height = 330;
-//         gCanvas.width = 330;
-//         gMeme.lines[0].size = 25;
-//         gMeme.lines[0].yline = 300;
-//         gSize = 25;
-//         gRectXDiff = 250;
-//         gRectHeightD = -10;
-//         reOrderCanvas();
-//     }
-// }
-
 function getCurrImg() {
     return gMeme.selectedImgId;
 }
@@ -123,5 +108,4 @@ function zeroMemesLines() {
     gMeme.lines[0].color = 'white';
     gMeme.lines[0].fontfamily = 'mpact';
     gMeme.selectedLineIdx = 0;
-    getMobileChange();
 }
