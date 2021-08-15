@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="preload" as="font" href="/fonts/impact.ttf" type="font/ttf" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/Poppins-Medium.ttf" type="font/ttf" crossorigin="anonymous">
     <title>David's Meme Generator</title>
 </head>
 
 
-<body onload="init()">
+<body onload="init()" onresize="resizeCanvas()">
     <main class="main-container">
         <div class="header">
             <img class="logo" src="./imgs/LOGO.png" alt="">
@@ -26,27 +27,17 @@
                 <!-- input txt line -->
                 <input class="curr-txt radius" type="text">
                 <div class="large-btns">
-                    <button class="addline btn radius" onclick="onCreateNewLine()"><img src="./ICONS/add.png" alt=""></button>
-                    <button class="switch btn radius" onclick="onSwitch()"><img src="./ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
-                    <button class="delete btn radius" onclick="onDeleteMeme()"><img src="./ICONS/trash.png" alt=""></button>
+                    <button class="addline btn radius" onclick="onCreateNewLine()"><img src="./icons/add.png" alt=""></button>
+                    <button class="switch btn radius" onclick="onSwitch()"><img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                    <button class="delete btn radius" onclick="onDeleteMeme()"><img src="./icons/trash.png" alt=""></button>
                     <button class="move-up btn radius" onclick="onMoveLine(5)">&#8595</button>
                     <button class="move-up btn radius" onclick="onMoveLine(-5)">&#8593</button>
                     <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">&#11123</a>
                 </div>
                 <div class="small-btns radius">
-                    <select class="radius" name="color" id="color" onchange="onSetColor()">
-                        <option selected>Color</option>
-                        <option value="yellow">yellow</option>
-                        <option value="orange">orange</option>
-                        <option value="red">red</option>
-                        <option value="pink">pink</option>
-                        <option value="purple">purple</option>
-                        <option value="blue">blue</option>
-                        <option value="green">green</option>
-                        <option value="black">black</option>
-                        <option value="brown">brown</option>
-                        <option value="grey">grey</option>
-                    </select>
+                    <button class="radius">
+                        <label for="color"><input type="color" id="color" onchange="onSetColor()"><img src="./icons/paint-board-and-brush.png" alt=""></label>
+                    </button>
                     <select class="radius" name="font" id="font" onchange="onSetFont()">
                         <option selected>Font</option>
                         <option value="Trebuchet MS">Trebuchet MS</option>

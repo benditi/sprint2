@@ -10,6 +10,11 @@
     src: url(/fonts/impact.ttf);
 }
 
+@font-face {
+    font-family: poppinsmedium;
+    src: url(/fonts/Poppins-Medium.ttf);
+}
+
 body {
     height: 100vh;
     margin: 0;
@@ -38,8 +43,6 @@ body {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     align-items: center;
-    /* justify-content: space-evenly;
-    align-items: center; */
 }
 
 img.logo {
@@ -51,11 +54,13 @@ img.logo {
 .gal-nav {
     grid-column: 7/8;
     grid-row: 1/2;
+    font-family: poppinsmedium;
 }
 
 .memes-nav {
     grid-column: 9/10;
     grid-row: 1/2;
+    font-family: poppinsmedium;
 }
 
 .memes-nav.highlite {
@@ -65,6 +70,7 @@ img.logo {
 }
 
 .message-pop {
+    font-family: poppinsmedium;
     display: none;
     position: absolute;
     background-color: lightgreen;
@@ -145,14 +151,12 @@ input.curr-txt {
     justify-content: space-evenly;
 }
 
-.large-btns button {}
-
 .large-btns img {
     height: 12px;
 }
 
 .large-btns a {
-    width: 26px;
+    width: 28px;
     text-align: center;
     font-size: 1.5rem;
     background-color: purple;
@@ -178,8 +182,10 @@ input.curr-txt {
 }
 
 .move-up.btn {
-    font-size: 1rem;
+    width: 28px;
+    font-size: 1.2rem;
     font-weight: bolder;
+    text-align: center;
 }
 
 .small-btns {
@@ -194,7 +200,7 @@ input.curr-txt {
 
 .small-btns button {
     height: 50%;
-    box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    box-shadow: 1px 0px 0px 1px #5c5c5c;
     border-style: solid;
 }
 
@@ -206,9 +212,14 @@ input.curr-txt {
     height: 50%;
 }
 
+.small-btns input {
+    position: absolute;
+    display: none;
+}
+
 .small-btns select {
     height: 50%;
-    box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    box-shadow: 1px 0px 0px 1px #5c5c5c;
 }
 
 
@@ -245,7 +256,7 @@ input.curr-txt {
 
 .shadowbox {}
 
-@media screen and (min-width: 718px) {
+@media screen and (min-width: 880px) {
     .image-gallery {
         height: 80%;
         display: grid;
@@ -266,7 +277,7 @@ input.curr-txt {
     }
     .btns-container {
         flex-grow: 0;
-        height: 450px;
+        height: 370px;
         width: 486px;
         justify-content: space-between;
     }
@@ -288,5 +299,11 @@ input.curr-txt {
         height: 200px;
         border-radius: 8px;
         margin: 10px;
+    }
+}
+
+@media screen and (min-width: 970px) {
+    .btns-container {
+        height: 450px;
     }
 }

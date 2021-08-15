@@ -1,6 +1,7 @@
 'use strict';
-var gDiffRect = 400;
-var gHiRect = 0;
+var gRectXDiff = 400;
+var gRectYDiff = 0;
+var gRectHeightD = 0;
 
 function drawText(txt, x, y) {
     let currLine = gMeme.lines[gMeme.selectedLineIdx]
@@ -17,14 +18,12 @@ function drawText(txt, x, y) {
 function drawRect(x, y) {
     gCtx.beginPath()
     const sx = x - 5;
-    const sy = y - 50 - gHiRect;
-    const ex = x + gDiffRect;
-    const ey = y + 30;
-    const dx = ex - sx;
-    const dy = ey - sy;
-    gCtx.rect(sx, sy, dx, dy)
+    const sy = y - 50 - gRectYDiff;
+    const rectW = gRectXDiff + 5;
+    const rectH = 80 + gRectHeightD;
+    gCtx.rect(sx, sy, rectW, rectH)
     gCtx.fillStyle = 'rgba(214, 207, 207, 0.034)';
-    gCtx.fillRect(sx, sy, dx, dy)
+    gCtx.fillRect(sx, sy, rectW, rectH)
     gCtx.strokeStyle = 'black'
     gCtx.stroke()
 }
@@ -32,7 +31,7 @@ function drawRect(x, y) {
 function isRectangleClicked(clickedPos, currLine) {
     let x = currLine.xline;
     let y = currLine.yline;
-    if ((x - 5 <= clickedPos.x) && (clickedPos.x <= x + gDiffRect) && (y - 50 <= clickedPos.y) &&
+    if ((x - 5 <= clickedPos.x) && (clickedPos.x <= x + gRectXDiff) && (y - 50 <= clickedPos.y) &&
         (clickedPos.y <= y + 30)) {
         return true;
     } else return false;

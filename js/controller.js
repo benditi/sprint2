@@ -23,7 +23,7 @@ function initCanvas() {
     getMobileChange();
     //listeners
     input.addEventListener('input', onEditTxt);
-    window.addEventListener('resize', resizeCanvas);
+    // window.addEventListener('resize', resizeCanvas);
     addMouseListeners();
     addTouchListeners();
 }
@@ -66,16 +66,33 @@ function reOrderwithout() {
 }
 // changes canvas size and line properties when screen width changes at specific breakpoint
 function resizeCanvas() {
-    if (window.matchMedia("(min-width: 718px)").matches) {
+    var iWidth = document.documentElement.clientWidth;
+    if (iWidth > 970) {
+        gCanvas.height = 450;
+        gCanvas.width = 450;
+        reOrderCanvas();
+    } else if (iWidth <= 970 && iWidth > 718) {
+        gCanvas.height = 370;
+        gCanvas.width = 370;
+        gMeme.lines[0].size = 25;
+        gMeme.lines[0].yline = 300;
+        gSize = 25;
+        gRectXDiff = 250;
+        gRectHeightD = -10;
+        reOrderCanvas();
+
+    } else if (iWidth <= 880) {
         gCanvas.height = 330;
         gCanvas.width = 330;
         gMeme.lines[0].size = 25;
         gMeme.lines[0].yline = 300;
         gSize = 25;
-        gDiffRect = 250;
+        gRectXDiff = 250;
+        gRectHeightD = -10;
+        reOrderCanvas();
     }
-    reOrderCanvas();
 }
+
 
 function renderImg(imgID) {
     let elImg = document.querySelector(`.img${imgID.toString()}`);
@@ -113,11 +130,14 @@ function onCreateNewLine() {
 }
 
 function onDeleteMeme() {
-    clearCanvas();
-    renderImg(gMeme.selectedImgId);
-    zeroMemesLines();
-    let line = gMeme.lines[0]
-    drawText(line.txt, line.xline, line.yline)
+    if (gMeme.lines.length === 1) return;
+    gMeme.lines.pop();
+    gMeme.selectedLineIdx = gMeme.lines.length - 1;
+    reOrderCanvas();
+    let currLine = gMeme.lines[gMeme.selectedLineIdx];
+    let newTxt = currLine.txt;
+    document.querySelector('input.curr-txt').value = newTxt;
+    focusInput();
 }
 
 function onSwitch() {
